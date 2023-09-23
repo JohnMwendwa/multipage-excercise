@@ -8,7 +8,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/"
-              className={(isActive) => (isActive ? "active" : "")}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Home
             </NavLink>
@@ -16,7 +16,7 @@ export default function Navbar() {
           <li>
             <NavLink
               to="/products"
-              className={(isActive) => (isActive ? "active" : "")}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               Our Products
             </NavLink>
