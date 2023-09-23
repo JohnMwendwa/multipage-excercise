@@ -7,7 +7,7 @@ export default function ProductsList() {
       <h1>Our Products</h1>
       <ul id="products-list">
         {products.map((product) => (
-          <Product details={product} />
+          <Product key={product.id} {...product} />
         ))}
       </ul>
     </div>
