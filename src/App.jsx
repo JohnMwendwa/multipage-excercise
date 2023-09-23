@@ -1,18 +1,22 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import WelcomePage from "./pages/Welcome";
-import ProductsPage from "./pages/Products";
-import ProductDetailsPage from "./pages/ProductDetails";
 import Layout from "./components/shared/Layout";
+
+const ProductsPage = lazy(() => import("./pages/Products"));
+const ProductDetailsPage = lazy(() => import("./pages/ProductDetails"));
 
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:id" element={<ProductDetailsPage />} />
-      </Routes>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }
